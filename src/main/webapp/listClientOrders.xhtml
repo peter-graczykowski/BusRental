@@ -1,0 +1,85 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <body>
+        <ui:composition template="./mainTemplate.xhtml">
+            <ui:define name="content">
+                <h:form id="OrdersForm" class="text-left reservation-form" >
+                    <div class="margin-bottom">
+                        <h:outputLabel style="font-size: x-large"  class="margin-bottom"  value="#{msg['page.list.client.orders.title']}" /><h:outputLabel style="font-size: x-large"  class="margin-bottom"  value=": ${accountControllerBean.selectedAccountDTO.login}" />
+                        <h:messages globalOnly="true" styleClass="error_large" />                
+                        <h:messages id="success" for="success" styleClass="confirm_large" />
+                        <div class="flex-column">
+                            <h:dataTable width="100%" var="row"  class="table table-striped" value="${listClientOrdersPageBean.dataModelOrderes}">
+                                <label class ="text-left" >
+                                    <h:column id="orderedBus" class="padding">
+                                        <f:facet name="header">${msg['page.orders.list.label.orderedbus']}</f:facet>
+                                        <h:outputText value="#{row.orderedBus.busName}" />
+                                    </h:column>
+                                </label>
+                                <label class="text-left">
+                                    <h:column id="orderedBusPlate">
+                                        <f:facet name="header">${msg['page.bus.label.platenumber']}</f:facet>
+                                        <h:outputText value="#{row.orderedBus.plateNumber}" />
+                                    </h:column>
+                                </label>
+                                <label class="text-left">
+                                    <h:column id="orderStartDate">
+                                        <f:facet name="header">${msg['page.orders.list.label.order.startdate']}</f:facet>
+                                        <h:outputText value="#{row.orderStartDate}" >
+                                            <f:convertDateTime type="date" dateStyle="full"/>
+                                        </h:outputText>
+                                    </h:column>
+                                </label>
+                                <label class="text-left">
+                                    <h:column id="orderEndDate">
+                                        <f:facet name="header">${msg['page.orders.list.label.order.enddate']}</f:facet>
+                                        <h:outputText value="#{row.orderEndDate}" >
+                                            <f:convertDateTime type="date" dateStyle="full"/>
+                                        </h:outputText>
+                                    </h:column>
+                                </label>
+                                <label class="text-left">
+                                    <h:column id="orderCreator">
+                                        <f:facet name="header">${msg['page.orders.list.label.ordercreator']}</f:facet>
+                                        <h:outputText value="#{row.orderCreator.login}" />
+                                    </h:column>
+                                </label>
+                                <label class="text-left">
+                                    <h:column id="phoneNumber">
+                                        <f:facet name="header">${msg['page.orders.list.label.ordercreator.phone']}</f:facet>
+                                        <h:outputText value="#{row.orderCreator.phoneNumber}" />
+                                    </h:column>
+                                </label>
+                                <h:column id="actions">
+                                    <f:facet  name="header">${msg['page.header.label.actions']}</f:facet>
+                                    <div>
+                                        <h:commandButton value="#{row.timeButtonLabel}" action="${listClientOrdersPageBean.deleteSelectedOrderAction(row)}" 
+                                                         onclick="if (!confirm('${msg['page.info.confirm.delete.action']}?')) {return false;};return true;"/>
+                                    </div>
+                                </h:column>
+                            </h:dataTable>
+                        </div>
+                        <div class="flex-center margin-top-small">
+                            <div>
+                                <h:commandButton class="main-button margin-right-small" value="#{msg['page.buses.list.action.mass.delete.past']}" action="${listClientOrdersPageBean.deletePastClientOrders()}" 
+                                                 onclick="if (!confirm('${msg['page.info.confirm.delete.action']}?')) {return false;}; return true;" immediate="true"/>  
+                                <h:commandButton class="main-button margin-right-small" value="#{msg['page.buses.list.action.mass.delete.current']}" action="${listClientOrdersPageBean.deleteCurrentClientOrders()}" 
+                                                 onclick="if (!confirm('${msg['page.info.confirm.delete.action']}?')) {return false;}; return true;" immediate="true"/>  
+                                <h:commandButton value="#{msg['page.action.clients.list']}" class="main-button margin-right-small"  action="listClientAccounts.xhtml" immediate="true"/>   
+                                <h:commandButton value="#{msg['page.action.return.main']}" class="main-button" action="mainPage.xhtml" immediate="true"/>   
+                            </div>
+                        </div>
+                    </div>
+                </h:form>
+
+            </ui:define>
+
+        </ui:composition>
+
+    </body>
+</html>

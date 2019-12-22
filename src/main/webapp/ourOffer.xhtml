@@ -1,0 +1,50 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <body>
+        <ui:composition template="./mainTemplate.xhtml">
+            <ui:define name="content">
+                <h:form id="BussesForm" class="text-left reservation-form">
+                    <div class="margin-bottom">
+                        <h:outputLabel style="font-size: x-large" class="margin-bottom" value="#{msg['page.our.offer.title']}" />
+                        <h4>#{msg['page.our.offer.info']}</h4>
+                        <h:messages globalOnly="true" styleClass="error_large" />                
+                        <h:messages id="success" for="success" styleClass="confirm_large" />
+                        <div class="flex-column">
+                            <h:dataTable width="60%" var="row" class="table table-striped" value="${ourOfferPageBean.dataModelBuses}">
+                                <label class ="text-left" >
+                                    <h:column id="busname" class="padding_small">
+                                        <f:facet name="header">${msg['page.bus.label.busname']}</f:facet>
+                                        <h:outputText value="#{row.busName}" />
+                                    </h:column>
+                                </label>                                
+                                <label class="text-left">  
+                                    <h:column  id="plateNumber">
+                                        <f:facet name="header">${msg['page.bus.label.platenumber']}</f:facet>
+                                        <h:outputText value="#{row.plateNumber}" />
+                                    </h:column>
+                                </label>                                
+                                <label class="text-left">    
+                                    <h:column id="seats">
+                                        <f:facet name="header">${msg['page.bus.label.seats']}</f:facet>
+                                        <h:outputText value="#{row.seats}" />
+                                    </h:column>
+                                </label> 
+                            </h:dataTable>
+                        </div>
+                        <div class="flex-center margin-top-small">
+                            <div>
+                                <h:commandButton value="#{msg['page.action.return.main']}" class="main-button margin-right-small" action="mainPage.xhtml" immediate="true"/>   
+                                <h:commandButton value="#{msg['page.action.create.account']}" class="main-button" action="newAccount.xhtml" immediate="true"/>   
+                            </div>
+                        </div>
+                    </div>
+                </h:form>
+            </ui:define>
+        </ui:composition>
+    </body>
+</html>

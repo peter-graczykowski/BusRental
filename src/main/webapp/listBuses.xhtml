@@ -1,0 +1,80 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <body>
+
+        <ui:composition template="./mainTemplate.xhtml">
+
+            <ui:define name="content">
+               
+               <h:form id="BussesForm" class="text-left reservation-form" >
+                    <div class="margin-bottom">
+                    <h:outputLabel style="font-size: x-large"  class="margin-bottom" value="#{msg['page.buses.list.title']}" />
+                    <h:messages globalOnly="true" styleClass="error_large" />                
+                    <h:messages id="success" for="success" styleClass="confirm_large" />
+                      <div class="flex-column">
+                   <h:dataTable width="100%" var="row" class="table table-striped" value="${listBusesPageBean.dataModelBuses}">                        
+                       
+                         <label class ="text-left" >
+                <h:column id="busname" class="padding">
+                    <f:facet name="header">${msg['page.bus.label.busname']}</f:facet>
+                    <h:outputText value="#{row.busName}" />
+                </h:column>
+                                </label>                                
+                                <label class="text-left">
+                        
+                <h:column id="plateNumber">
+                    <f:facet name="header">${msg['page.bus.label.platenumber']}</f:facet>
+                    <h:outputText value="#{row.plateNumber}" />
+                </h:column>
+                            </label>
+                                
+                                <label class="text-left">                                                               
+                                    
+                <h:column id="seats">
+                    <f:facet name="header">${msg['page.bus.label.seats']}</f:facet>
+                    <h:outputText value="#{row.seats}" />
+                </h:column>
+                                       </label>
+                                
+                                <label class="text-left">                     
+                <h:column id="busCreator">
+                    <f:facet name="header">${msg['page.bus.label.buscreator']}</f:facet>
+                    <h:outputText value="#{row.busCreator.name} #{row.busCreator.surname}" />
+                </h:column>
+                                       </label>                        
+                             
+                <h:column id="actions">
+                    <f:facet  name="header">${msg['page.header.label.actions']}</f:facet>
+                    <div>
+                    <h:commandButton value="${msg['page.buses.list.action.edit']}"  class="margin-right-small"  action="${listBusesPageBean.editBusAction(row)}"/>
+                    <h:commandButton value="${msg['page.authorized.accounts.list.active']}" class="button margin-right-small"  action="#{listBusesPageBean.activateBusAction(row)}" disabled="#{row.active}" />
+                    <h:commandButton value="${msg['page.authorized.accounts.list.deactive']}" class="button margin-right-small"  action="#{listBusesPageBean.deactivateBusAction(row)}" disabled="#{not row.active}" />
+                    <h:commandButton value="${msg['page.buses.list.action.delete']}" class="button margin-right-small"  action="${listBusesPageBean.deleteSelectedBusAction(row)}" disabled="#{not row.activeReservations}"  
+                                     onclick="if (! confirm('${msg['page.info.confirm.delete.action']}?') ) { return false;}; return true; " />
+                    <h:commandButton value="${msg['page.buses.list.action.list.bus.orders']}" action="${listBusesPageBean.listBusOrders(row)}" disabled="#{row.activeReservations}" />
+                    </div>
+                    
+                </h:column>
+            </h:dataTable>
+                      </div>
+                     <div class="flex-center margin-top-small">
+                            <div>
+                        
+                     
+             <h:commandButton value="#{msg['page.action.return.main']}" class="main-button" action="mainPage.xhtml" immediate="true"/>   
+       </div>
+                        </div>
+                    </div>
+                </h:form>
+
+            </ui:define>
+
+        </ui:composition>
+
+    </body>
+</html>

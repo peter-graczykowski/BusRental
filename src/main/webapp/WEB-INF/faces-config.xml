@@ -1,0 +1,150 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<faces-config version="2.2"
+              xmlns="http://xmlns.jcp.org/xml/ns/javaee"
+              xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+              xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-facesconfig_2_2.xsd">
+
+    <application>
+        <locale-config>
+            <default-locale>pl</default-locale>
+            <supported-locale>pl</supported-locale>
+            <supported-locale>en</supported-locale>
+        </locale-config>
+        <resource-bundle>
+            <base-name>i18n.messages</base-name>
+            <var>msg</var>
+        </resource-bundle>
+        <message-bundle>
+            i18n.jsf_messages
+        </message-bundle>
+        <resource-bundle>
+            <base-name>/Bundle</base-name>
+            <var>bundle</var>
+        </resource-bundle>
+    </application>
+   
+   <navigation-rule>
+<from-view-id>*</from-view-id>
+
+        <navigation-case>
+            <from-outcome>main</from-outcome>
+            <to-view-id>/mainPage.xhtml</to-view-id>
+            <redirect />
+        </navigation-case>      
+        <navigation-case>
+            <from-outcome>changePassword</from-outcome>
+            <to-view-id>/changePassword.xhtml</to-view-id>
+            <redirect />
+        </navigation-case>
+        
+        <navigation-case>
+            <from-outcome>listAuthorizedAccounts</from-outcome>
+            <to-view-id>/listAuthorizedAccounts.xhtml</to-view-id>
+            <redirect />
+        </navigation-case>
+        
+        <navigation-case>
+            <from-outcome>listNewAccounts</from-outcome>
+            <to-view-id>/listNewAccounts.xhtml</to-view-id>
+            <redirect />
+        </navigation-case>
+        
+        <navigation-case>
+            <from-outcome>listClientAccounts</from-outcome>
+            <to-view-id>/listClientAccounts.xhtml</to-view-id>
+            <redirect />
+        </navigation-case>
+        
+        <navigation-case>
+            <from-outcome>listClientOrders</from-outcome>
+            <to-view-id>/listClientOrders.xhtml</to-view-id>
+            <redirect />
+        </navigation-case>
+        
+        <navigation-case>
+            <from-outcome>editAccount</from-outcome>
+            <to-view-id>/editAccount.xhtml</to-view-id>
+            <redirect />
+        </navigation-case>
+        
+        <navigation-case>
+            <from-outcome>editMyAccount</from-outcome>
+            <to-view-id>/editMyAccount.xhtml</to-view-id>
+             <redirect />
+        </navigation-case>
+        
+        <navigation-case>
+            <from-outcome>viewMyAccount</from-outcome>
+            <to-view-id>/viewMyAccount.xhtml</to-view-id>
+            <redirect />
+        </navigation-case>
+        
+        <navigation-case>
+            <from-outcome>register</from-outcome>
+            <to-view-id>/newAccount.xhtml</to-view-id>
+            <redirect />
+        </navigation-case>
+        
+        <navigation-case>
+            <from-outcome>resetPassword2</from-outcome>
+            <to-view-id>/resetPassword2.xhtml</to-view-id>
+            <redirect />
+        </navigation-case>
+        
+        <navigation-case>
+            <from-outcome>resetPassword3</from-outcome>
+            <to-view-id>/resetPassword3.xhtml</to-view-id>
+            <redirect />
+        </navigation-case>
+        
+         <navigation-case>
+            <from-outcome>resetPassword</from-outcome>
+            <to-view-id>/resetPassword.xhtml</to-view-id>
+            <redirect />
+        </navigation-case>
+        
+        <navigation-case>
+            <from-outcome>newBus</from-outcome>
+            <to-view-id>/newBus.xhtml</to-view-id>
+            <redirect />
+        </navigation-case>
+        
+        <navigation-case>
+            <from-outcome>editBus</from-outcome>
+            <to-view-id>/editBus.xhtml</to-view-id>
+            <redirect />
+        </navigation-case>
+        
+        <navigation-case>
+            <from-outcome>listBuses</from-outcome>
+            <to-view-id>/listBuses.xhtml</to-view-id>
+            <redirect />
+        </navigation-case>
+        
+        <navigation-case>
+            <from-outcome>listBusOrders</from-outcome>
+            <to-view-id>/listBusOrders.xhtml</to-view-id>
+            <redirect />
+        </navigation-case>
+        
+        <navigation-case>
+            <from-outcome>newOrder</from-outcome>
+            <to-view-id>/newOrder.xhtml</to-view-id>
+            <redirect />
+        </navigation-case>
+        
+        <navigation-case>
+            <from-outcome>editOrder</from-outcome>
+            <to-view-id>/editOrder.xhtml</to-view-id>
+            <redirect />
+        </navigation-case>
+        
+        <navigation-case>
+            <from-outcome>listMyOrders</from-outcome>
+            <to-view-id>/listMyOrders.xhtml</to-view-id>
+            <redirect />
+        </navigation-case>
+
+        
+    </navigation-rule>    
+</faces-config>

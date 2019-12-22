@@ -1,0 +1,117 @@
+<?xml version='1.0' encoding='UTF-8' ?> 
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:ui="http://java.sun.com/jsf/facelets">
+
+    <h:head>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+        <h:outputStylesheet name="/css/bootstrap.min.css"/>
+        <h:outputStylesheet name="/css/font-awesome.min.css"/>
+        <h:outputStylesheet name="/css/style.css"/>
+        <title>#{msg['page.main.template.title']}</title>
+        <h:outputStylesheet name="/css/daterangepicker.css" />
+    </h:head>
+    <h:body>
+        <div class="container-fluid ">
+            <div class="row">
+                <div class="col-md-12 header" align="center">
+                    <ui:insert name="header">
+                        <h1><a href=""><img src="resources/images/bus.jpg" width="100%" height="100%"/></a></h1>
+                    </ui:insert>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-12 menu">
+                    <ui:insert name="menu">
+                        <div class="row">
+                            <nav class="navbar navbar-inverse">
+                                <div class="container-fluid">
+                                    <div class="navbar-header">
+                                        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+                                            <span class="icon-bar"></span>
+                                            <span class="icon-bar"></span>
+                                            <span class="icon-bar"></span>
+                                        </button>
+                                        <a class="navbar-brand">#{msg['page.main.template.label.menu']}</a>
+                                    </div>
+                                    <div class="collapse navbar-collapse" id="myNavbar">
+                                        <ul class="nav navbar-nav">
+                                            <li class="active"><a href="mainPage.xhtml">#{msg['page.main.template.label.mainpage']}</a></li>
+                                            <f:subview id="unauthenticatedView" rendered="#{empty request.remoteUser}">
+                                                <li><a href="ourOffer.xhtml"><span class="glyphicon glyphicon-align-justify"></span> #{msg['page.main.template.label.guest.ouroffer']}</a></li>
+                                            </f:subview>     
+                                            <f:subview id="clientView" rendered="#{request.isUserInRole('Client')}">
+                                                <li><a href="newOrder.xhtml"><span class="glyphicon glyphicon-plus-sign"></span> #{msg['page.main.template.label.client.neworder']}</a></li>
+                                                <li><a href="listMyCurrentOrders.xhtml"><span class="glyphicon glyphicon-tasks"></span> #{msg['page.main.template.label.client.mycurrentorderslist']}</a></li>
+                                                <li><a href="listMyPastOrders.xhtml"><span class="glyphicon glyphicon-tasks"></span> #{msg['page.main.template.label.client.mypastorderslist']}</a></li>
+                                            </f:subview>     
+                                            <f:subview id="planistView" rendered="#{request.isUserInRole('Planist')}">
+                                                <li><a href="newBus.xhtml"><span class="glyphicon glyphicon-plus-sign"></span> #{msg['page.main.template.label.planist.addnewbus']}</a></li>
+                                                <li><a href="listBuses.xhtml"><span class="glyphicon glyphicon-th-list"></span> #{msg['page.main.template.label.planist.buseslist']}</a></li>
+                                                <li><a href="listClientAccounts.xhtml"><span class="glyphicon glyphicon-user"></span> #{msg['page.main.template.label.planist.clientslist']}</a></li>
+                                                <li class="dropdown">
+                                                    <a class="dropdown-toggle" data-toggle="dropdown" href="#">
+                                                        <span class="glyphicon glyphicon-tasks"></span> #{msg['page.main.template.label.orders.lists']}<span class="caret"></span></a>
+                                                    <ul class="dropdown-menu">
+                                                        <li><a href="listCurrentOrders.xhtml"><span class="glyphicon glyphicon-tasks"></span> #{msg['page.main.template.label.planist.currentorderslist']}</a></li>
+                                                        <li><a href="listPastOrders.xhtml"><span class="glyphicon glyphicon-tasks"></span> #{msg['page.main.template.label.planist.pastorderslist']}</a></li>
+                                                    </ul>
+                                                </li>
+                                            </f:subview>    
+                                            <f:subview id="adminView" rendered="#{request.isUserInRole('Admin')}">
+                                                <li><a href="listAuthorizedAccounts.xhtml"><span class="glyphicon glyphicon-align-justify"></span> #{msg['page.main.template.label.admin.accountslist']}</a></li>
+                                                <li><a href="listNewAccounts.xhtml"><span class="glyphicon glyphicon-list"></span> #{msg['page.main.template.label.admin.newaccountslist']}</a></li>
+                                            </f:subview>
+                                        </ul>
+                                        <ul class="nav navbar-nav navbar-right">
+                                            <f:subview id="unauthenticatedView2" rendered="#{empty request.remoteUser}">
+                                                <li><a href="resetPassword.xhtml"><span class="glyphicon glyphicon-tag"></span> #{msg['page.main.template.label.resetpassword']}</a></li>
+                                                <li><a href="newAccount.xhtml"><span class="glyphicon glyphicon-user"></span> #{msg['page.main.template.label.createaccount']}</a></li>
+                                                <li><a href="login.xhtml"><span class="glyphicon glyphicon-log-in"></span> #{msg['page.main.template.label.login']}</a></li>
+                                            </f:subview>
+                                            <f:subview id="authenticatedView" rendered="#{not empty request.remoteUser}">
+                                                <li class="dropdown">
+                                                    <a class="dropdown-toggle" data-toggle="dropdown" href="#">
+                                                        <span class="glyphicon glyphicon-cog"></span> #{msg['page.main.template.label.account']}<span class="caret"></span></a>
+                                                    <ul class="dropdown-menu">
+                                                        <li><a href="viewMyAccount.xhtml"><span class="glyphicon glyphicon-th-list"></span> #{msg['page.main.template.label.account.show']}</a></li>
+                                                        <li><a href="editMyAccount.xhtml"><span class="glyphicon glyphicon-cog"></span> #{msg['page.main.template.label.account.edit']}</a></li>
+                                                        <li><a href="changeMyPassword.xhtml"><span class="glyphicon glyphicon-tags"></span> #{msg['page.main.template.label.change.my.password']}</a></li>
+                                                    </ul>
+                                                </li>
+                                                <li><a> <span class="glyphicon glyphicon-user"></span> ${mainApplicationPageBean.myLogin} (${mainApplicationPageBean.myAccessLevel()})</a></li>
+                                                <li><a href="logout.xhtml"><span class="glyphicon glyphicon-off"></span> #{msg['page.main.template.label.logout']}</a></li>
+                                            </f:subview>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </nav> 
+                        </div>
+                    </ui:insert>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-12 content-area">
+                    <div class="content">
+                        <ui:insert name="content">
+                        </ui:insert>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-12 footer">
+                    <ui:insert name="footer">
+                        #{msg['page.main.template.footer']}
+                    </ui:insert>
+                </div>              
+            </div>
+        </div>
+        <h:outputScript name="/js/jquery.js"/>
+        <h:outputScript name="/js/moment.min.js"/>
+        <h:outputScript name="/js/daterangepicker.min.js"/>
+        <h:outputScript name="/js/bootstrap.min.js"/>
+        <h:outputScript name="/js/app.js"/>  
+    </h:body>
+</html>

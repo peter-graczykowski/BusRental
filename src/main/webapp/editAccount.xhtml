@@ -1,0 +1,72 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <body>
+
+        <ui:composition template="./mainTemplate.xhtml">
+            <ui:define name="content" class="flex-center flex-column">
+                <h:outputLabel style="font-size: x-large" class="margin-bottom flex-center" value="#{msg['page.edit.account.title']}" />
+                <div class="flex flex-center">
+                    <h:form id="EditAccountForm" class="text-left reservation-form">
+                        <div class="margin-bottom text-center">
+                          <h:messages globalOnly="true" styleClass="error_large" />                
+                          <h:messages id="success" for="success" styleClass="confirm_large" />
+                            <div class="flex-column">
+                                <label class="text-left">
+                                    <h:outputLabel value="#{msg['access.level.info']}: " />
+                                </label>
+                                <h:inputText class="margin-bottom-small" id="accessLevel" maxlength="50" required="true" disabled="true"
+                                             value="${editAccountPageBean.accountDTO.accessLevelString}" />
+                                <h:message for="accessLevel" styleClass="error_small"/>
+                                <label class="text-left">
+                                    <h:outputLabel value="#{msg['page.register.form.label.login']}: " />
+                                </label>
+                                <h:inputText class="margin-bottom-small" id="login" maxlength="50" required="true" disabled="true"
+                                             value="${editAccountPageBean.accountDTO.login}" />
+                                <h:message for="login" styleClass="error_small"/>
+                                <label class="text-left">
+                                    <h:outputLabel value="#{msg['page.register.form.label.name']}: * " />
+                                </label>
+                                <h:inputText class="margin-bottom-small" id="name" maxlength="60" required="true" validatorMessage="#{msg['page.account.validator.name']}"
+                                             value="${editAccountPageBean.accountDTO.name}" > 
+                                    <f:validateLength minimum="2" maximum="60"  ></f:validateLength>
+                                    <f:validateRegex pattern="[A-ZĄĆĘŁŃÓŚŹŻ][a-ząćęłńóśźż]+([\s][A-ZĄĆĘŁŃÓŚŹŻ][a-ząćęłńóśźż]+)?" />                    
+                                </h:inputText>
+                                <h:message for="name" styleClass="error_small"/>
+                                <label class="text-left">
+                                    <h:outputLabel value="#{msg['page.register.form.label.surname']}: * " />
+                                </label>
+                                <h:inputText class="margin-bottom-small" id="surname" maxlength="100" required="true" validatorMessage="#{msg['page.account.validator.surname']}"
+                                             value="${editAccountPageBean.accountDTO.surname}" > 
+                                    <f:validateLength minimum="2" maximum="100"  ></f:validateLength>
+                                    <f:validateRegex pattern="[A-ZĄĆĘŁŃÓŚŹŻ][a-ząćęłńóśźż]+([\s\-\'][A-ZĄĆĘŁŃÓŚŹŻ][a-ząćęłńóśźż]+)*" />                    
+                                </h:inputText>
+                                <h:message for="surname" styleClass="error_small"/>
+                                <label class="text-left">
+                                    <h:outputLabel value="#{msg['page.register.form.label.phone.number']}: * " />
+                                </label>
+                                <h:inputText class="margin-bottom-small" id="phoneNumber" maxlength="13" required="true" validatorMessage="#{msg['page.account.validator.phone.number']}"
+                                             value="${editAccountPageBean.accountDTO.phoneNumber}" >  
+                                    <f:validateRegex pattern="\d{9,13}" />
+                                </h:inputText>
+                                <h:message for="phoneNumber" styleClass="error_small"/>
+                            </div>
+                            <div class="flex-center margin-top-small">
+                                <div>
+                                    <h:commandButton class="main-button margin-right" value="#{msg['page.action.submit']}"  action="${editAccountPageBean.saveEditAccountAction()}" />
+                                </div>
+                                <div>
+                                    <h:commandButton class="main-button" value="#{msg['page.action.cancel']}"  action="listAuthorizedAccounts.xhtml" immediate="true"/>
+                                </div>
+                            </div>
+                        </div>
+                    </h:form>
+                </div>
+            </ui:define>
+        </ui:composition>
+    </body>
+</html>

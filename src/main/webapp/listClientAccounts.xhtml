@@ -1,0 +1,66 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <body>
+        <ui:composition template="./mainTemplate.xhtml">
+            <ui:define name="content">
+                <h:form id="AccountsForm" class="text-left reservation-form" >
+                    <div class="margin-bottom">
+                        <h:outputLabel style="font-size: x-large" class="margin-bottom" value="#{msg['page.client.accounts.list.title']}" />
+                        <h:messages globalOnly="true" styleClass="error_large" />                
+                        <h:messages id="success" for="success" styleClass="confirm_large" />
+                        <div class="flex-column">
+                            <h:dataTable width="100%" var="row" class="table table-striped" value="${listClientAccountsPageBean.dataModelAccounts}">
+                                <label class ="text-left" >
+                                    <h:column id="name" class="padding">
+                                        <f:facet name="header">${msg['page.register.form.label.name']}</f:facet>
+                                        <h:outputText value="#{row.name}" />
+                                    </h:column>
+                                </label>
+                                <label class="text-left">
+                                    <h:column id="surname">
+                                        <f:facet name="header">${msg['page.register.form.label.surname']}</f:facet>
+                                        <h:outputText value="#{row.surname}" />
+                                    </h:column>
+                                </label>
+                                <label class="text-left">
+                                    <h:column id="login">
+                                        <f:facet name="header">${msg['page.register.form.label.login']}</f:facet>
+                                        <h:outputText value="#{row.login}" />
+                                    </h:column>
+                                </label>
+                                <label class="text-left"> 
+                                    <h:column id="phoneNumber">
+                                        <f:facet name="header">${msg['page.register.form.label.phone.number']}</f:facet>
+                                        <h:outputText value="#{row.phoneNumber}" />
+                                    </h:column>
+                                </label>
+                                <label class="text-left">
+                                    <h:column id="active">
+                                        <f:facet name="header">${msg['page.list.client.orders.label.account.status']}</f:facet>
+                                        <h:outputText value="#{row.activeInfo}" />
+                                    </h:column>
+                                </label>
+                                <h:column id="actions">
+                                    <f:facet  name="header">${msg['page.header.label.actions']}</f:facet>
+                                    <div>
+                                        <h:commandButton value="${msg['page.client.accounts.list.client.orders']}" action="${listClientAccountsPageBean.listClientOrders(row)}" disabled="#{row.activeReservations}"/>
+                                    </div>
+                                </h:column>
+                            </h:dataTable>
+                        </div>
+                        <div class="flex-center margin-top-small">
+                            <div>
+                                <h:commandButton value="#{msg['page.action.return.main']}"  class="main-button" action="mainPage.xhtml" immediate="true"/>   
+                            </div>
+                        </div>
+                    </div>
+                </h:form>
+            </ui:define>
+        </ui:composition>
+    </body>
+</html>

@@ -1,0 +1,294 @@
+
+.header{
+    margin-top: 10px;
+    margin-left: 5%;
+    width: 90%;
+    border: 1px solid black;
+    margin-bottom: 10px;
+}
+
+.header-logo{
+    max-height:400px;
+}
+
+.menu{
+    margin-left: 5%;
+    width: 90%;
+
+}
+.content-area{
+    margin-left: 5%;
+    width: 90%;
+    margin-bottom: 10px;
+    padding: 0px;
+}
+
+.padding_small{
+    padding-top: 5px;
+    padding-bottom: 5px;
+}
+
+.content{
+    width: 100%;
+    min-height: 300px;
+    border: 1px solid black;
+    padding: 20px;
+    box-sizing: border-box;
+    float: left;
+}
+
+.footer{
+    margin-left: 5%;
+    width: 90%;
+    border: 1px solid black;;
+    text-align: center;
+    padding: 10px;
+}
+
+.confirm_large{
+    font-size: larger;
+    color: #008000;
+    font-style: oblique;
+}
+
+.error_large{
+    font-size: larger;
+    color: #FF0000;
+    font-style: oblique;
+}
+
+.error_medium{
+    font-size: medium;
+    color: #FF0000;
+    font-style: oblique;
+}
+
+.error_small{
+    font-size: small;
+    color: #FF0000;
+    font-style: oblique;
+}
+
+.flex-between{
+    display:flex;
+    justify-content:space-between;
+}
+
+.flex-middle{
+    display:flex;
+    align-items:center;
+}
+
+.icon-small{
+    height:auto;
+    width:auto;
+    alignment-adjust: auto;
+}
+
+.main-logo{
+    height:250px;
+}
+
+.header-right{
+    display:flex;
+    align-items:flex-end;
+    padding:0px 0;
+}
+
+.border-remove{
+    border:0
+}
+
+.content-area .content{
+    border:0
+}
+
+.wrapper{
+    display:flex;
+    flex-flow:column wrap;
+    justify-content:space-between;
+    min-height:100%;
+}
+
+.login-form{
+    display: flex;
+    flex-flow: column wrap;
+    align-items: center;
+}
+
+.login-form div{
+    display:inline-block;
+}
+
+.login-form label{
+    display:flex;
+    flex-flow:column wrap;
+}
+
+.login-form input{
+    margin-bottom:15px;
+}
+
+.login-form input[type=submit]{
+    background-color: #1F4ABE;
+    color:#fff;
+    padding: 10px 30px;
+    border-radius: 5px;
+    outline: 0;
+    border: 0;
+    font-weight: 700;
+    transition:.8s ease;
+}
+
+.login-form input[type=submit]:hover{
+    background-color: #699CFC;
+    transition:.8s ease;
+}
+
+html, body, .container{
+    height:100vh;
+}
+
+.main-button{
+    background-color: #1F4ABE;
+    color:#fff;
+    padding: 7px 25px;
+    border-radius: 5px;
+    outline: 0;
+    border: 1px solid #4682B4;
+    font-weight: 700;
+    transition:.5s ease;
+}
+
+.main-button:disabled{
+    background-color: #A9A9A9;
+    color: #fff;
+    padding: 7px 25px;
+    border-radius: 5px;
+    outline: 0;
+    border: 1px solid #808080;
+    font-weight: 700;
+    transition:.5s ease;
+    cursor: not-allowed;
+}
+
+.main-button:hover:enabled{
+    background-color: #699CFC;
+    color: #F0FFFF;
+    padding: 7px 25px;
+    border-radius: 5px;
+    outline: 0;
+    border: 1px solid #4682B4;
+    font-weight: 700;
+    transition:.5s ease;
+}
+
+.button:disabled{
+    cursor: not-allowed;
+}
+
+.margin-bottom{
+    margin-bottom:20px;
+}
+
+.reservation-form{
+    display: flex;
+    flex-flow: column wrap;
+}
+
+.table td{
+    vertical-align:middle !important;
+}
+
+.text-center{
+    text-align:center;
+}
+
+.min-hight-small{
+    min-height:50px;
+}
+
+.margin-remove{
+    margin:0 !important;
+}
+
+.margin-top-small{
+    margin-top:15px;
+}
+.navbar-container{
+    max-height: 50px;
+}
+
+.margin-bottom-small{
+    margin-bottom:15px;
+}
+
+.margin-right{
+    margin-right:20px;
+}
+
+.margin-right-small{
+    margin-right:5px;
+}
+/*pit*/
+.padding{
+    padding-top: 10px;
+    padding-bottom: 10px;
+}
+/*pit*/
+.margin-inside-table{
+    margin-right:120px;
+}
+
+.flex-center{
+    display:flex;
+    justify-content: center;
+}
+
+.flex-column{
+    display:flex;
+    flex-flow:column wrap;
+}
+
+.text-left, .select2{
+    text-align:left !important;
+}
+
+.text-center, .select2{
+    text-align:center !important;
+}
+
+@media (max-width:1200px){
+    .header-right{
+        display:none;
+    }
+    .header{
+        display:flex;
+        justify-content: center;
+    }
+}
+
+@media (max-width: 768px){
+    .main-logo{
+        height:120px;
+    }
+}
+
+.footer{
+    margin-left: 5%;
+    width: 90%;
+    border: 1px solid black;;
+    text-align: center;
+    padding: 10px;
+}
+
+.footer{
+    width:100%;
+    margin:0;
+    border-top:1px solid #ccc;
+    border-right:0;
+    border-left:0;
+    border-bottom:0;
+    color:#000;
+    font-size:12px;
+}

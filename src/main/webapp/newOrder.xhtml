@@ -1,0 +1,51 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <body>
+        <ui:composition template="./mainTemplate.xhtml">
+            <ui:define name="content" class="flex-center flex-column">
+                <h:outputLabel style="font-size: x-large" class="margin-bottom flex-center" value="#{msg['page.new.order.title']}" />
+                <div class="flex flex-center">
+                    <h:form id="OrderForm" class="text-left reservation-form">
+                        <div class="margin-bottom text-center">
+                          <h:messages globalOnly="true" styleClass="error_large" />
+                          <h:outputText styleClass="error_large" value="${newOrderPageBean.displayConflictDates}" />                
+                          <h:messages id="success" for="success" styleClass="confirm_large" />
+                            <div class="flex-column">
+                                <label class="text-left">
+                                    <h:outputLabel value="#{msg['page.new.order.form.label.orderdate']} #{msg['page.new.order.form.label.orderpattern']}: *" />
+                                </label>
+                                <h:inputText id="orderDate" class="datepicker margin-bottom-small" size="20" required="true" validatorMessage="page.order.validator.orderdate"
+                                             value="${newOrderPageBean.orderDTO.orderStringDate}" >
+                                </h:inputText>
+                                <h:message for="orderDate" styleClass="error_small"/>
+                                <label class="text-left">
+                                    <h:outputLabel value="#{msg['page.new.order.form.label.choosebus']}: * " />
+                                </label>
+                                <h:selectOneMenu class="js-select" id="chosenBus" value="${newOrderPageBean.busDTO.plateNumber}" >
+                                    <f:selectItem itemLabel="${msg['page.new.order.form.label.choosebus']}:"  />
+                                    <f:selectItems  value="${newOrderPageBean.listActiveBuses}" var="buses" itemValue="#{buses.plateNumber}" itemLabel="#{buses}" />
+                                </h:selectOneMenu>
+                                <h:message for="chosenBus" styleClass="error_small"/>
+                            </div>
+                            <div class="flex-center margin-top-small">
+                                <div>
+                                    <h:commandButton class="main-button margin-right" value="#{msg['page.action.confirm']} " action="${newOrderPageBean.newOrderAction()}" />   
+                                </div>
+                                <div>
+                                    <h:commandButton class="main-button" value="#{msg['page.action.cancel']}"  action="mainPage.xhtml" immediate="true"/>
+                                </div>
+                            </div>
+                        </div>
+                            <label class="text-left"><h:outputLabel value="#{msg['page.new.order.form.text.emptylist']}" />
+                            </label>
+                    </h:form>
+                </div>
+            </ui:define>
+        </ui:composition>
+    </body>
+</html>
