@@ -1,0 +1,8 @@
+<#if licenseFirst??>
+${licenseFirst}
+</#if>
+${licensePrefix}Final project of postgraduate studies:
+${licensePrefix}"Nowoczesne aplikacje biznesowe Java EE" edition 8
+<#if licenseLast??>
+${licenseLast}
+</#if>
