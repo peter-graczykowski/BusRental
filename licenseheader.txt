@@ -3,6 +3,7 @@ ${licenseFirst}
 </#if>
 ${licensePrefix}Final project of postgraduate studies:
 ${licensePrefix}"Nowoczesne aplikacje biznesowe Java EE" edition 8
+${licensePrefix}Created by: Piotr Graczykowski
 <#if licenseLast??>
 ${licenseLast}
 </#if>
